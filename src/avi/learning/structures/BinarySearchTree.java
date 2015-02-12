@@ -1,5 +1,8 @@
 package avi.learning.structures;
 
+import java.util.LinkedList;
+import java.util.Queue;
+
 public class BinarySearchTree {
 	
 	public static void main(String[] args) {
@@ -15,6 +18,8 @@ public class BinarySearchTree {
 		bst.printPreOrderTree();
 		bst.printInOrderTree();
 		bst.printPostOrderTree();
+		
+		bst.printLevelOrderTree();
 	}
 	
 	static class BST {
@@ -43,6 +48,26 @@ public class BinarySearchTree {
 			System.out.println();
 		}
 		
+		public void printLevelOrderTree() {
+			Queue<Node> queue = new LinkedList<>();
+			if(root != null) {
+				queue.add(root);
+			}
+			
+			while(!queue.isEmpty()) {
+				Node node = queue.poll();
+				System.out.print(node.data + ", ");
+				
+				if(node.left != null) {
+					queue.add(node.left);
+				}
+				
+				if(node.right != null) {
+					queue.add(node.right);
+				}
+			}
+		}
+		
 		private void printPreOrderTree(Node node) {
 			if(node != null) {
 				System.out.print(node.data + ", ");
@@ -66,7 +91,7 @@ public class BinarySearchTree {
 				System.out.print(node.data + ", ");
 			}
 		}
-
+		
 		private void addData(int data, Node node, Node parent, boolean right) {
 			if(node == null) {
 				node = new Node(data, parent);

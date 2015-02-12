@@ -123,16 +123,4 @@ public class Sorting {
 			array[lowerBound++] = helper[j++];
 		}
 	}
-	
-	private void heapify() {
-		// 20, 13, 9, 8, 5, 3, 7, 6, 2, 1
-		int[] testArray = {6,7,2,5,1,13,20,3,9,8};
-		
-		for(int i=0; i< testArray.length/2 - 1; i++) {
-			int left = 2*i+1,
-				right = left+1,
-				largest = testArray[i];
-			
-		}
-	}
 }

@@ -13,6 +13,9 @@ public class Sorting {
 		sorting.insertionSort();
 		sorting.buildArray();
 		sorting.mergeSort();
+		sorting.buildArray();
+		sorting.quickSort(0, sorting.array.length-1);
+		sorting.printArray("Quick Sorted:-");
 	}
 	
 	private void buildArray() {
@@ -122,5 +125,33 @@ public class Sorting {
 		while (j<=high) {
 			array[lowerBound++] = helper[j++];
 		}
+	}
+	
+	private void quickSort(int start, int end) {
+		int i = start, j = end;
+		int pivot = (start + end) / 2;
+		while (i < j) {
+			
+			while (array[i] < array[pivot]) {
+				i ++;
+			}
+			
+			while (array[j] > array[pivot]) {
+				j --;
+			}
+			
+			if(i <= j) {
+				swapElements(i, j);
+				i ++;
+				j --;
+			}
+		}
+		
+        if (start < j) {
+            quickSort(start, j);
+        }
+        if (i < end) {
+            quickSort(i, end);
+        }
 	}
 }
